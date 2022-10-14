@@ -24,7 +24,16 @@ namespace WindowsFormsApp2
         double subtotalForcheps = 0;
         double taxRate = 0.13;
         double taxAmout = 0;
+        double subtotalAll = 0;
+        double subtotal = 0;
+        double tatalTaxAmout = 0;
+        double taxAmoutSlices = 0;
+        double taxAmoutpop = 0;
+        double taxAmoutcheps = 0;
         double total = 0;
+        double totalSlice = 0;
+        double totalpop = 0;
+        double totalcheps = 0;
 
         public Form1()
         {
@@ -62,25 +71,33 @@ namespace WindowsFormsApp2
 
                 //calculations
                 subtotalForslice = slicePrice * numOfSlices;
- 
                 subtotalForpop = pop * numOfPops;
-
                 subtotalForcheps = cheps * nomOfCheps;
+                subtotal = subtotalForcheps + subtotalForpop + subtotalForslice;
+                subtotalAll = subtotal;
 
+                tatalTaxAmout = subtotal* taxRate;
 
-                taxAmout = subtotalForslice + subtotalForpop + subtotalForcheps * taxRate;
-
-
-
-                total = subtotalForslice + subtotalForpop + subtotalForcheps + taxAmout;
+                total = subtotalForslice + subtotalForpop + subtotalForcheps + tatalTaxAmout;
 
                 //output
-               
+
+                subtotalAlloutput.Text = $"{subtotalAll.ToString("C")}";
+                tatalTaxAmoutoutput.Text = $"{tatalTaxAmout.ToString("C")}";
+                totaloutput.Text = $"{total.ToString("C")}";
+
             }
             catch
             {
-              //  subtotalOutput.Text = "ERROR";
+              subtotalAlloutput.Text = "ERROR";
+              tatalTaxAmoutoutput.Text = "ERROR";
+              totaloutput.Text = "ERROR";
             }
+        }
+
+        private void slicesInput_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
